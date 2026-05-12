@@ -21,5 +21,5 @@ import com.edutech.util.JwtUtil;
 
 public class AuthController {
 
-     //Add the required code here!
+     
 }
