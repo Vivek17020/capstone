@@ -6,7 +6,20 @@ import { HttpService } from '../../../services/http.service';
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.scss']
 })
-export class ProfilComponent  {
-  
-  //write required code here!
+export class ProfilComponent implements OnInit {
+  user: any = null;
+  showError = false;
+  errorMessage = '';
+
+  constructor(private httpService: HttpService) {}
+
+  ngOnInit(): void {
+    this.httpService.getProfile().subscribe({
+      next: (data) => this.user = data,
+      error: () => {
+        this.showError = true;
+        this.errorMessage = 'Failed to load profile.';
+      }
+    });
+  }
 }

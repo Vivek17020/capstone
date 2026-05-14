@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { FlightComponent } from './component/flight/flight.component';
 import { FlightSearchComponent } from './component/flight-search/flight-search.component';
 import { BookingsComponent } from './component/bookings/bookings.component';
 import { AssignPilotComponent } from './component/assign-pilot/assign-pilot.component';
