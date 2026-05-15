@@ -1,0 +1,570 @@
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon"><div class="chakra"></div></div>
+    <div class="nav-brand">
+      <span class="nav-brand-main">Bharat Airlines</span>
+      <span class="nav-brand-sub">भारत एयरलाइंस</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active" onclick="showView('home',this)">Home</a>
+    <a href="#" onclick="showView('dashboard',this)">My Bookings</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#offers">Offers</a>
+    <a href="#classes">Cabin Classes</a>
+    <a href="#" class="nav-cta" (click)="openModal('loginModal')">Sign In</a>
+  </div>
+  <div class="nav-user" (click)="openModal('loginModal')" style="cursor:pointer">
+    <div class="nav-avatar">VK</div>
+  </div>
+</nav>
+
+<!-- MAIN TAB BAR -->
+<div class="main-tabs" id="mainTabs">
+  <button class="main-tab active" onclick="setMainTab(this,'search')">✈ Book Flight</button>
+  <button class="main-tab" onclick="setMainTab(this,'checkin')">🛂 Web Check-in</button>
+  <button class="main-tab" onclick="setMainTab(this,'status')">📍 Flight Status</button>
+  <button class="main-tab" onclick="setMainTab(this,'manage')">✏ Manage Booking</button>
+  <button class="main-tab" onclick="setMainTab(this,'holiday')">🏖 Holidays</button>
+</div>
+
+<!-- HOME VIEW -->
+<div class="home-view" id="homeView">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-mandala"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        India's Pride in the Sky
+      </div>
+      <h1 class="hero-title">
+        Fly the<br>
+        <span class="hero-title-accent">Spirit of</span><br>
+        Bharat
+      </h1>
+      <span class="hero-subtitle-deva">आसमान में भारत की शान</span>
+      <p class="hero-desc">
+        From the Himalayas to the seas, from the deserts to the backwaters — discover every corner of India and the world with warmth that only Bharat Airlines brings.
+      </p>
+      <div class="hero-stats">
+        <div><span class="hero-stat-num">120+</span><span class="hero-stat-label">Destinations</span></div>
+        <div><span class="hero-stat-num">48M+</span><span class="hero-stat-label">Happy Passengers</span></div>
+        <div><span class="hero-stat-num">98.2%</span><span class="hero-stat-label">On-Time Rate</span></div>
+      </div>
+    </div>
+
+    <!-- SEARCH CARD -->
+    <div class="search-card">
+      <div class="search-tabs">
+        <button class="search-tab active">One Way</button>
+        <button class="search-tab" (click)="activateTab($event)">Round Trip</button>
+        <button class="search-tab" (click)="activateTab($event)">Multi-City</button>
+      </div>
+      <div class="search-row">
+        <div class="search-field" style="flex:2">
+          <label>FROM</label>
+          <div class="search-input-wrap">
+            <span class="search-input-city" id="fromCity">DEL</span>
+            <span class="search-input-full">Indira Gandhi Intl, Delhi</span>
+          </div>
+        </div>
+        <button class="swap-btn" (click)="swapCities()" title="Swap">⇌</button>
+        <div class="search-field" style="flex:2">
+          <label>TO</label>
+          <div class="search-input-wrap">
+            <span class="search-input-city" id="toCity">BOM</span>
+            <span class="search-input-full">Chhatrapati Shivaji Intl, Mumbai</span>
+          </div>
+        </div>
+      </div>
+      <div class="search-row">
+        <div class="search-field">
+          <label>DEPARTURE</label>
+          <div class="search-input-wrap">
+            <input type="date" id="depDate" value="2026-05-20"/>
+          </div>
+        </div>
+        <div class="search-field">
+          <label>RETURN</label>
+          <div class="search-input-wrap">
+            <input type="date" id="retDate" value="2026-05-27"/>
+          </div>
+        </div>
+      </div>
+      <div class="search-row">
+        <div class="search-field">
+          <button class="pax-btn">
+            <span class="pax-btn-label">TRAVELLERS & CLASS</span>
+            <span class="pax-btn-val">1 Adult · Economy</span>
+          </button>
+        </div>
+      </div>
+      <button class="search-btn" (click)="searchFlights()">
+        ✈ Search Flights
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item"><span class="marquee-dot"></span> SALE: Mumbai to Dubai from ₹12,499</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> New routes: Varanasi · Leh · Ayodhya</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Earn 2× BharatMiles this summer</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Business Class upgrade for ₹2,999</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Amritsar to London — now direct!</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> SALE: Mumbai to Dubai from ₹12,499</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> New routes: Varanasi · Leh · Ayodhya</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Earn 2× BharatMiles this summer</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Business Class upgrade for ₹2,999</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Amritsar to London — now direct!</span>
+  </div>
+</div>
+
+<!-- FLIGHT RESULTS (hidden by default) -->
+<div style="max-width:1200px;margin:32px auto;padding:0 40px;" id="resultsSection">
+  <div class="results-panel" id="resultsPanel">
+    <div class="results-header">
+      <div>
+        <div class="results-route" id="resultsRoute">DEL → BOM</div>
+        <div class="results-meta" id="resultsMeta">20 May 2026 · 1 Passenger · Economy</div>
+      </div>
+      <span class="results-count" id="resultsCount">6 flights found</span>
+    </div>
+    <div class="flight-list" id="flightList"></div>
+  </div>
+</div>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Where will you go next?</div>
+        <h2 class="section-title">Popular <span class="section-title-italic">Destinations</span></h2>
+      </div>
+      <a href="#" class="see-all">View all routes →</a>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card featured" (click)="setDest('Goa')">
+        <div class="dest-img-placeholder" style="--c1:#006994;--c2:#00B4D8;aspect-ratio:16/9">
+          <span class="dest-icon">🌊</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Goa</div>
+          <div class="dest-country">India · Beaches & Culture</div>
+          <div class="dest-price">From ₹3,499 one-way</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+      <div class="dest-card" (click)="setDest('Jaipur')">
+        <div class="dest-img-placeholder" style="--c1:#C9921A;--c2:#FF6B00">
+          <span class="dest-icon">🏯</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Jaipur</div>
+          <div class="dest-country">India · Pink City</div>
+          <div class="dest-price">From ₹2,299</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+      <div class="dest-card" (click)="setDest('Varanasi')">
+        <div class="dest-img-placeholder" style="--c1:#FF6B00;--c2:#C9921A">
+          <span class="dest-icon">🛕</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Varanasi</div>
+          <div class="dest-country">India · Spiritual Capital</div>
+          <div class="dest-price">From ₹2,799</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+      <div class="dest-card" (click)="setDest('Dubai')">
+        <div class="dest-img-placeholder" style="--c1:#1A2E4A;--c2:#243C60">
+          <span class="dest-icon">🏙</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Dubai</div>
+          <div class="dest-country">UAE · International</div>
+          <div class="dest-price">From ₹12,499</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+      <div class="dest-card" (click)="setDest('Leh')">
+        <div class="dest-img-placeholder" style="--c1:#4A3B28;--c2:#8B0000">
+          <span class="dest-icon">🏔</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Leh-Ladakh</div>
+          <div class="dest-country">India · Himalayan Gem</div>
+          <div class="dest-price">From ₹5,999</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section class="offers-section" id="offers">
+  <div class="section" style="padding-top:0;padding-bottom:0">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Limited Time</div>
+        <h2 class="section-title">Exclusive <span class="section-title-italic">Offers</span></h2>
+      </div>
+      <a href="#" class="see-all">All offers →</a>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-badge">FLASH SALE</div>
+        <div class="offer-img" style="background:linear-gradient(135deg,#FF6B00,#C9921A)">🌴</div>
+        <div class="offer-body">
+          <div class="offer-tag">Beach Escape</div>
+          <div class="offer-title">Goa Summer Deal</div>
+          <div class="offer-desc">Fly to Goa this summer and enjoy the sun, sand and culture. Valid on tickets booked before 30 May.</div>
+          <div class="offer-price-row">
+            <div class="offer-price">₹2,999 <span>/ person</span></div>
+            <button class="offer-btn">Book Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-badge">NEW ROUTE</div>
+        <div class="offer-img" style="background:linear-gradient(135deg,#8B0000,#1A2E4A)">✈</div>
+        <div class="offer-body">
+          <div class="offer-tag">International</div>
+          <div class="offer-title">Amritsar–London Direct</div>
+          <div class="offer-desc">India's first direct flight connecting Amritsar to London Heathrow. Launch fares available for a limited time.</div>
+          <div class="offer-price-row">
+            <div class="offer-price">₹34,999 <span>/ person</span></div>
+            <button class="offer-btn">Book Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-badge">UPGRADE</div>
+        <div class="offer-img" style="background:linear-gradient(135deg,#0A1628,#C9921A)">💺</div>
+        <div class="offer-body">
+          <div class="offer-tag">Business Class</div>
+          <div class="offer-title">Bid for Business</div>
+          <div class="offer-desc">Already booked Economy? Upgrade to Business Class at a fraction of the cost with our Bid & Fly programme.</div>
+          <div class="offer-price-row">
+            <div class="offer-price">₹2,999 <span>upgrade</span></div>
+            <button class="offer-btn">Bid Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE / FEATURES -->
+<section class="experience-section">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="exp-grid">
+      <div class="exp-visual">
+        <div class="exp-card-stack">
+          <div class="exp-card exp-card-main">
+            <div class="exp-card-header">
+              <span class="exp-card-airline">Bharat Airlines</span>
+              <span class="exp-card-class">Business</span>
+            </div>
+            <div class="exp-route">
+              <div>
+                <div class="exp-iata">DEL</div>
+                <div class="exp-city">New Delhi</div>
+              </div>
+              <div class="exp-line">
+                <div class="exp-line-bar"></div>
+                <div class="exp-duration">2h 20m · Non-stop</div>
+              </div>
+              <div style="text-align:right">
+                <div class="exp-iata">BOM</div>
+                <div class="exp-city">Mumbai</div>
+              </div>
+            </div>
+            <div class="exp-footer">
+              <div class="exp-stat"><div class="exp-stat-val">Seat 2A</div><div class="exp-stat-key">Window</div></div>
+              <div class="exp-stat"><div class="exp-stat-val">08:45</div><div class="exp-stat-key">Departs</div></div>
+              <div class="exp-stat"><div class="exp-stat-val">BA-204</div><div class="exp-stat-key">Flight No.</div></div>
+              <div class="exp-stat"><div class="exp-stat-val">On Time</div><div class="exp-stat-key" style="color:#4CAF50">Status</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="exp-text">
+        <div class="exp-eyebrow">The Bharat Experience</div>
+        <h2 class="exp-title">Fly with <em>Pride,</em><br>Land with <em>Joy</em></h2>
+        <p class="exp-desc">Every Bharat Airlines flight is a celebration of Indian hospitality. From the moment you board to the moment you land, feel at home in the sky.</p>
+        <div class="exp-features">
+          <div class="exp-feature">
+            <div class="exp-feat-icon">🍛</div>
+            <div>
+              <div class="exp-feat-title">Authentic Indian Cuisine</div>
+              <div class="exp-feat-desc">Regional meals curated by top chefs — from Hyderabadi biryani to Gujarati thali, 30,000 feet above.</div>
+            </div>
+          </div>
+          <div class="exp-feature">
+            <div class="exp-feat-icon">🎵</div>
+            <div>
+              <div class="exp-feat-title">BharatPlay Entertainment</div>
+              <div class="exp-feat-desc">500+ Bollywood movies, regional cinema, music, and podcasts — all on a crisp 4K personal screen.</div>
+            </div>
+          </div>
+          <div class="exp-feature">
+            <div class="exp-feat-icon">📶</div>
+            <div>
+              <div class="exp-feat-title">High-Speed Wi-Fi</div>
+              <div class="exp-feat-desc">Stay connected across all domestic and international routes with our Ku-band satellite internet.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CABIN CLASSES -->
+<section id="classes">
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Your comfort, our priority</div>
+        <h2 class="section-title">Cabin <span class="section-title-italic">Classes</span></h2>
+      </div>
+    </div>
+    <div class="classes-grid">
+      <div class="class-card">
+        <div class="class-banner first">
+          <div class="class-name">Maharaja<em>First Class</em></div>
+        </div>
+        <div class="class-body">
+          <ul class="class-features">
+            <li>Fully-flat private suites with sliding door</li>
+            <li>Turndown service & Westin Heavenly bedding</li>
+            <li>5-course gourmet Indian & continental menu</li>
+            <li>Dedicated chauffeur drive to airport</li>
+            <li>Priority check-in, boarding & baggage</li>
+          </ul>
+          <a class="class-cta maroon" href="#">Explore Maharaja →</a>
+        </div>
+      </div>
+      <div class="class-card">
+        <div class="class-banner business">
+          <div class="class-name">Rajdhani<em>Business Class</em></div>
+        </div>
+        <div class="class-body">
+          <ul class="class-features">
+            <li>180° lie-flat seats with aisle access</li>
+            <li>Premium Indian meal service by renowned chefs</li>
+            <li>18" 4K personal screen with noise-cancelling</li>
+            <li>Lounge access at 40+ airports</li>
+            <li>30kg extra baggage allowance</li>
+          </ul>
+          <a class="class-cta navy" href="#">Explore Rajdhani →</a>
+        </div>
+      </div>
+      <div class="class-card">
+        <div class="class-banner economy">
+          <div class="class-name">Dharti<em>Economy Class</em></div>
+        </div>
+        <div class="class-body">
+          <ul class="class-features">
+            <li>Ergonomic seats with 32" seat pitch</li>
+            <li>Complimentary hot meals on all flights</li>
+            <li>12" HD touchscreen entertainment</li>
+            <li>Free seat selection for BharatMiles members</li>
+            <li>15kg check-in + 7kg cabin baggage</li>
+          </ul>
+          <a class="class-cta gold" href="#">Explore Dharti →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- end home-view -->
+
+<!-- DASHBOARD VIEW -->
+<div class="dashboard-view" id="dashView">
+  <div class="dash-welcome">
+    <div class="dash-welcome-text">
+      <h2>Namaste, Vikram Kumar 🙏</h2>
+      <p>You have 2 upcoming flights · 4,820 BharatMiles</p>
+    </div>
+    <div class="dash-pnr">
+      <div class="dash-pnr-label">Loyalty ID</div>
+      <div class="dash-pnr-val">BM-VK-8824</div>
+    </div>
+  </div>
+  <div class="dash-cards">
+    <div class="dash-card">
+      <div class="dash-card-icon" style="background:#FFF3E8">✈</div>
+      <div class="dash-card-val">2</div>
+      <div class="dash-card-label">Upcoming Flights</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-icon" style="background:#FDF0F0">🎫</div>
+      <div class="dash-card-val">7</div>
+      <div class="dash-card-label">Total Bookings</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-icon" style="background:#FFFAED">⭐</div>
+      <div class="dash-card-val">4,820</div>
+      <div class="dash-card-label">BharatMiles</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-icon" style="background:#EEF2F7">🛡</div>
+      <div class="dash-card-val">Silver</div>
+      <div class="dash-card-label">Tier Status</div>
+    </div>
+  </div>
+  <div class="dash-bookings">
+    <div class="dash-table-header">
+      <span class="dash-table-title">My Bookings</span>
+      <a href="#" class="see-all">Search Flights →</a>
+    </div>
+    <table>
+      <thead><tr>
+        <th>PNR</th><th>Flight</th><th>Route</th><th>Date</th><th>Class</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>BA83921</strong></td>
+          <td>BA-204 · Bharat Express</td>
+          <td>DEL → BOM</td>
+          <td>20 May 2026</td>
+          <td>Economy</td>
+          <td><span class="status-pill status-confirmed">Confirmed</span></td>
+          <td><a class="action-link" href="#">Download Ticket</a> · <a class="action-link" href="#">Cancel</a></td>
+        </tr>
+        <tr>
+          <td><strong>BA77412</strong></td>
+          <td>BA-891 · Ganga Vihar</td>
+          <td>BOM → DXB</td>
+          <td>28 May 2026</td>
+          <td>Business</td>
+          <td><span class="status-pill status-confirmed">Confirmed</span></td>
+          <td><a class="action-link" href="#">Download Ticket</a> · <a class="action-link" href="#">Cancel</a></td>
+        </tr>
+        <tr>
+          <td><strong>BA55231</strong></td>
+          <td>BA-112 · Yamuna Arrow</td>
+          <td>DEL → JAI</td>
+          <td>12 Apr 2026</td>
+          <td>Economy</td>
+          <td><span class="status-pill status-confirmed">Confirmed</span></td>
+          <td><a class="action-link" href="#">Download Ticket</a> · <a class="action-link" href="#">Cancel</a></td>
+        </tr>
+        <tr>
+          <td><strong>BA40018</strong></td>
+          <td>BA-338 · Sindhu Route</td>
+          <td>COK → DEL</td>
+          <td>03 Mar 2026</td>
+          <td>Economy</td>
+          <td><span class="status-pill status-cancelled">Cancelled</span></td>
+          <td><a class="action-link" href="#">View Details</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;background:var(--saffron);border-radius:50%;display:flex;align-items:center;justify-content:center">
+            <div style="width:24px;height:24px;border:2px solid white;border-radius:50%"></div>
+          </div>
+        </div>
+        <div class="footer-brand-name">Bharat Airlines</div>
+        <div class="footer-brand-deva">भारत एयरलाइंस</div>
+        <p class="footer-brand-desc">Carrying the soul of India to every corner of the world. Safe, on time, and always with warmth.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Fly With Us</div>
+        <ul class="footer-links">
+          <li><a href="#">Book a Flight</a></li>
+          <li><a href="#">Manage Booking</a></li>
+          <li><a href="#">Web Check-in</a></li>
+          <li><a href="#">Flight Status</a></li>
+          <li><a href="#">Cabin Classes</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Travel Info</div>
+        <ul class="footer-links">
+          <li><a href="#">Baggage Policy</a></li>
+          <li><a href="#">Visa Information</a></li>
+          <li><a href="#">Special Meals</a></li>
+          <li><a href="#">Pet Travel</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">BharatMiles</div>
+        <ul class="footer-links">
+          <li><a href="#">Join the Programme</a></li>
+          <li><a href="#">Earn Miles</a></li>
+          <li><a href="#">Redeem Miles</a></li>
+          <li><a href="#">Partner Airlines</a></li>
+          <li><a href="#">Tier Benefits</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Bharat Airlines Ltd. All rights reserved. CIN: U62200DL2026PLC000001</span>
+      <div class="footer-socials">
+        <a class="social-btn" href="#">𝕏</a>
+        <a class="social-btn" href="#">in</a>
+        <a class="social-btn" href="#">f</a>
+        <a class="social-btn" href="#">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal" (click)="closeModalOutside($event,'loginModal')">
+  <div class="modal">
+    <button class="modal-close" (click)="closeModal('loginModal')">×</button>
+    <div class="modal-top">
+      <div class="modal-logo"><div style="width:24px;height:24px;border:2px solid white;border-radius:50%"></div></div>
+      <div>
+        <div class="modal-logo-text">Bharat Airlines</div>
+        <div class="modal-logo-sub">भारत एयरलाइंस</div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-title">Welcome back</div>
+      <div class="modal-subtitle">Sign in to manage your bookings and earn BharatMiles</div>
+      <div class="form-group">
+        <label class="form-label">Email or Username</label>
+        <input class="form-input" type="text" placeholder="yourname@email.com"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" placeholder="••••••••"/>
+      </div>
+      <button class="form-btn" (click)="doLogin()">Sign In to Bharat Airlines</button>
+      <div class="form-divider">— or —</div>
+      <div class="form-link">New traveller? <a href="#">Create a BharatMiles account</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Angular Router Outlet -->
+<div id="angular-router-view">
+  <router-outlet></router-outlet>
+</div>
