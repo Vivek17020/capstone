@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bharat Airlines — Fly the Spirit of India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --saffron: #FF6B00;
+    --saffron-light: #FF8C3A;
+    --saffron-pale: #FFF3E8;
+    --maroon: #8B0000;
+    --maroon-light: #B22222;
+    --maroon-pale: #FDF0F0;
+    --navy: #0A1628;
+    --navy-mid: #1A2E4A;
+    --navy-light: #243C60;
+    --gold: #C9921A;
+    --gold-light: #E8B84B;
+    --gold-pale: #FFFAED;
+    --cream: #FFFDF7;
+    --ivory: #F8F4EC;
+    --text-dark: #1A1005;
+    --text-mid: #4A3B28;
+    --text-muted: #8A7A6A;
+    --white: #FFFFFF;
+    --border: rgba(201,146,26,0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--navy);
+    border-bottom: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo-icon {
+    width: 40px; height: 40px;
+    background: var(--saffron);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .chakra {
+    width: 28px; height: 28px;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: relative;
+    animation: spin 8s linear infinite;
+  }
+  .chakra::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: radial-gradient(circle, transparent 40%, white 40%);
+    border-radius: 50%;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .nav-brand {
+    display: flex; flex-direction: column; line-height: 1.1;
+  }
+  .nav-brand-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--white); letter-spacing: 0.02em;
+  }
+  .nav-brand-sub {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 11px; color: var(--gold-light);
+    letter-spacing: 0.08em;
+  }
+  .nav-links { display: flex; align-items: center; gap: 6px; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13.5px; font-weight: 400;
+    padding: 6px 14px; border-radius: 4px;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .nav-links a:hover { color: var(--gold-light); background: rgba(255,255,255,0.07); }
+  .nav-links a.active { color: var(--gold-light); }
+  .nav-cta {
+    background: var(--saffron);
+    color: white !important;
+    font-weight: 500 !important;
+    border-radius: 4px !important;
+  }
+  .nav-cta:hover { background: var(--saffron-light) !important; color: white !important; }
+  .nav-user {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--saffron);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: white;
+    cursor: pointer;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 64px;
+    min-height: 600px;
+    position: relative;
+    background: var(--navy);
+    overflow: hidden;
+    display: flex; align-items: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 50%, rgba(255,107,0,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(201,146,26,0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #0A1628 0%, #1A2E4A 50%, #0A1628 100%);
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: 
+      repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+    background-size: 20px 20px;
+  }
+  .hero-mandala {
+    position: absolute; right: -60px; top: 50%;
+    transform: translateY(-50%);
+    width: 520px; height: 520px; opacity: 0.06;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+  }
+  .hero-mandala::before {
+    content: '';
+    position: absolute; inset: 30px;
+    border: 1px solid var(--gold); border-radius: 50%;
+  }
+  .hero-mandala::after {
+    content: '';
+    position: absolute; inset: 80px;
+    border: 1px solid var(--gold); border-radius: 50%;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+    padding: 80px 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero-text {}
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(201,146,26,0.15);
+    border: 1px solid rgba(201,146,26,0.3);
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; color: var(--gold-light);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--saffron); animation: pulse 2s ease infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 58px; font-weight: 600;
+    color: var(--white); line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .hero-title-accent { color: var(--saffron); font-style: italic; }
+  .hero-subtitle-deva {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 18px; color: var(--gold-light);
+    opacity: 0.8; margin-bottom: 16px; display: block;
+  }
+  .hero-desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px; line-height: 1.7;
+    margin-bottom: 32px; max-width: 440px;
+  }
+  .hero-stats {
+    display: flex; gap: 32px;
+  }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 600; color: var(--gold-light);
+    display: block;
+  }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+
+  /* ── SEARCH CARD ── */
+  .search-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px 28px 24px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+  }
+  .search-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold), var(--maroon));
+    border-radius: 16px 16px 0 0;
+  }
+  .search-tabs {
+    display: flex; gap: 4px; margin-bottom: 20px;
+    background: var(--ivory); border-radius: 8px; padding: 4px;
+  }
+  .search-tab {
+    flex: 1; padding: 8px; text-align: center;
+    border: none; background: transparent; border-radius: 6px;
+    font-size: 13px; font-weight: 500; color: var(--text-muted);
+    cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+  }
+  .search-tab.active {
+    background: white; color: var(--maroon);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  .search-row { display: flex; gap: 10px; margin-bottom: 12px; }
+  .search-field { flex: 1; position: relative; }
+  .search-field label {
+    display: block; font-size: 10px; font-weight: 600;
+    color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.07em; margin-bottom: 4px;
+  }
+  .search-input-wrap {
+    border: 1.5px solid #E8E0D0;
+    border-radius: 8px; padding: 10px 12px;
+    transition: border-color 0.2s;
+    background: var(--cream);
+  }
+  .search-input-wrap:focus-within { border-color: var(--saffron); }
+  .search-input-city { font-size: 18px; font-weight: 600; color: var(--text-dark); display: block; }
+  .search-input-full { font-size: 11px; color: var(--text-muted); display: block; }
+  .search-input-wrap input {
+    border: none; background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; color: var(--text-dark);
+    width: 100%; outline: none;
+  }
+  .swap-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: white; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    align-self: flex-end; margin-bottom: 2px; margin-top: 18px;
+    font-size: 16px; transition: all 0.2s; flex-shrink: 0;
+  }
+  .swap-btn:hover { background: var(--saffron-pale); border-color: var(--saffron); }
+  .pax-btn {
+    width: 100%; border: 1.5px solid #E8E0D0;
+    background: var(--cream); border-radius: 8px; padding: 10px 12px;
+    text-align: left; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: border-color 0.2s;
+  }
+  .pax-btn:hover { border-color: var(--saffron); }
+  .pax-btn-label { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; display: block; margin-bottom: 2px; }
+  .pax-btn-val { font-size: 13px; color: var(--text-dark); font-weight: 500; }
+  .search-btn {
+    width: 100%; background: var(--saffron);
+    color: white; border: none; border-radius: 8px;
+    padding: 14px; font-size: 15px; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.02em; transition: all 0.2s;
+    margin-top: 4px; display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .search-btn:hover { background: #E05A00; transform: translateY(-1px); }
+  .search-btn:active { transform: translateY(0); }
+
+  /* ── MARQUEE STRIP ── */
+  .marquee-strip {
+    background: var(--maroon);
+    padding: 10px 0; overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .marquee-inner {
+    display: flex; gap: 60px; width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-item {
+    font-size: 12px; color: rgba(255,255,255,0.8);
+    white-space: nowrap; letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold-light); }
+
+  /* ── DESTINATIONS ── */
+  .section { max-width: 1200px; margin: 0 auto; padding: 70px 40px; }
+  .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; }
+  .section-eyebrow { font-size: 11px; color: var(--saffron); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 600; color: var(--text-dark); line-height: 1.1;
+  }
+  .section-title-italic { font-style: italic; color: var(--maroon); }
+  .see-all {
+    font-size: 13px; color: var(--saffron); font-weight: 500;
+    text-decoration: none; display: flex; align-items: center; gap: 4px;
+    white-space: nowrap;
+  }
+  .see-all:hover { text-decoration: underline; }
+
+  .dest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .dest-card {
+    border-radius: 12px; overflow: hidden;
+    cursor: pointer; position: relative;
+    transition: transform 0.3s;
+    border: 1px solid var(--border);
+  }
+  .dest-card:hover { transform: translateY(-4px); }
+  .dest-card:hover .dest-overlay { opacity: 1; }
+  .dest-img {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    display: block; background: var(--ivory);
+  }
+  .dest-img-placeholder {
+    width: 100%; aspect-ratio: 3/4;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+    position: relative; overflow: hidden;
+  }
+  .dest-img-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--c1, #8B0000) 0%, var(--c2, #FF6B00) 100%);
+    opacity: 0.85;
+  }
+  .dest-img-placeholder .dest-icon { position: relative; z-index: 1; }
+  .dest-info {
+    padding: 14px 16px;
+    background: white;
+  }
+  .dest-city { font-size: 16px; font-weight: 600; color: var(--text-dark); margin-bottom: 2px; }
+  .dest-country { font-size: 12px; color: var(--text-muted); }
+  .dest-price { font-size: 13px; color: var(--saffron); font-weight: 600; margin-top: 6px; }
+  .dest-overlay {
+    position: absolute; inset: 0;
+    background: rgba(138,0,0,0.6);
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .dest-overlay-text { color: white; font-size: 14px; font-weight: 600; text-align: center; }
+  .dest-card.featured { grid-column: span 2; }
+  .dest-card.featured .dest-img-placeholder { aspect-ratio: 16/9; }
+
+  /* ── OFFERS ── */
+  .offers-section { background: var(--ivory); padding: 70px 0; }
+  .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .offer-card {
+    background: white; border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden; position: relative;
+    transition: box-shadow 0.2s;
+  }
+  .offer-card:hover { box-shadow: 0 8px 30px rgba(138,0,0,0.1); }
+  .offer-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--maroon); color: white;
+    font-size: 11px; font-weight: 600; padding: 4px 10px;
+    border-radius: 4px; letter-spacing: 0.04em;
+  }
+  .offer-img {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px; position: relative;
+  }
+  .offer-img::after { content: ''; position: absolute; inset: 0; }
+  .offer-body { padding: 20px; }
+  .offer-tag { font-size: 10px; color: var(--saffron); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .offer-title { font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+  .offer-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+  .offer-price-row { display: flex; align-items: center; justify-content: space-between; }
+  .offer-price { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--maroon); }
+  .offer-price span { font-size: 13px; font-family: 'DM Sans'; color: var(--text-muted); font-weight: 400; }
+  .offer-btn {
+    background: var(--saffron-pale); border: 1px solid var(--saffron);
+    color: var(--saffron); font-size: 13px; font-weight: 600;
+    padding: 8px 16px; border-radius: 6px; cursor: pointer;
+    font-family: 'DM Sans'; transition: all 0.2s;
+  }
+  .offer-btn:hover { background: var(--saffron); color: white; }
+
+  /* ── EXPERIENCE SECTION ── */
+  .experience-section {
+    background: var(--navy);
+    padding: 80px 0; position: relative; overflow: hidden;
+  }
+  .experience-section::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%);
+  }
+  .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .exp-visual {
+    position: relative;
+  }
+  .exp-card-stack { position: relative; height: 360px; }
+  .exp-card {
+    position: absolute; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px;
+    transition: all 0.3s;
+  }
+  .exp-card-main { inset: 0; display: flex; flex-direction: column; justify-content: space-between; }
+  .exp-card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .exp-card-airline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; color: white;
+  }
+  .exp-card-class {
+    background: var(--saffron); color: white;
+    font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 4px;
+  }
+  .exp-route {
+    display: flex; align-items: center; gap: 16px; margin: 24px 0;
+  }
+  .exp-iata {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 700; color: white; line-height: 1;
+  }
+  .exp-city { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .exp-line {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .exp-line-bar {
+    width: 100%; height: 1px; background: rgba(255,255,255,0.2);
+    position: relative;
+  }
+  .exp-line-bar::after {
+    content: '✈';
+    position: absolute; top: -10px; left: 50%;
+    transform: translateX(-50%); color: var(--gold-light); font-size: 16px;
+  }
+  .exp-duration { font-size: 11px; color: rgba(255,255,255,0.4); }
+  .exp-footer { display: flex; gap: 24px; }
+  .exp-stat { }
+  .exp-stat-val { font-size: 18px; font-weight: 600; color: var(--gold-light); }
+  .exp-stat-key { font-size: 11px; color: rgba(255,255,255,0.4); }
+  .exp-text {}
+  .exp-eyebrow { font-size: 11px; color: var(--saffron); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+  .exp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 600; color: white; line-height: 1.1; margin-bottom: 20px;
+  }
+  .exp-title em { font-style: italic; color: var(--gold-light); }
+  .exp-desc { color: rgba(255,255,255,0.55); font-size: 15px; line-height: 1.7; margin-bottom: 32px; }
+  .exp-features { display: flex; flex-direction: column; gap: 16px; }
+  .exp-feature { display: flex; align-items: flex-start; gap: 14px; }
+  .exp-feat-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(255,107,0,0.15); border: 1px solid rgba(255,107,0,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .exp-feat-title { font-size: 14px; font-weight: 600; color: white; margin-bottom: 2px; }
+  .exp-feat-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* ── CLASSES ── */
+  .classes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .class-card {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border); position: relative;
+    background: white; transition: transform 0.2s;
+  }
+  .class-card:hover { transform: translateY(-4px); }
+  .class-banner {
+    height: 180px; display: flex; align-items: flex-end;
+    padding: 20px; position: relative; overflow: hidden;
+  }
+  .class-banner.first { background: linear-gradient(135deg, #8B0000 0%, #C9921A 100%); }
+  .class-banner.business { background: linear-gradient(135deg, #0A1628 0%, #243C60 100%); }
+  .class-banner.economy { background: linear-gradient(135deg, #4A3B28 0%, #8A7A6A 100%); }
+  .class-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 600; color: white; position: relative; z-index: 1;
+  }
+  .class-name em { font-style: italic; color: var(--gold-light); font-size: 14px; display: block; font-family: 'DM Sans'; font-weight: 400; }
+  .class-body { padding: 20px; }
+  .class-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .class-features li { font-size: 13.5px; color: var(--text-mid); display: flex; align-items: center; gap: 8px; }
+  .class-features li::before { content: '✦'; color: var(--gold); font-size: 10px; }
+  .class-cta {
+    display: block; text-align: center; margin-top: 20px;
+    padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; text-decoration: none;
+    font-family: 'DM Sans';
+  }
+  .class-cta.maroon { background: var(--maroon-pale); color: var(--maroon); border: 1px solid rgba(139,0,0,0.2); }
+  .class-cta.maroon:hover { background: var(--maroon); color: white; }
+  .class-cta.navy { background: #EEF2F7; color: var(--navy); border: 1px solid rgba(10,22,40,0.2); }
+  .class-cta.navy:hover { background: var(--navy); color: white; }
+  .class-cta.gold { background: var(--gold-pale); color: var(--gold); border: 1px solid rgba(201,146,26,0.3); }
+  .class-cta.gold:hover { background: var(--gold); color: white; }
+
+  /* ── FLIGHT RESULTS PANEL ── */
+  .results-panel {
+    display: none;
+    background: white; border-radius: 16px; border: 1px solid var(--border);
+    overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  }
+  .results-panel.visible { display: block; }
+  .results-header {
+    background: var(--navy); padding: 20px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .results-route {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 600; color: white;
+  }
+  .results-meta { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .results-count { font-size: 13px; color: var(--gold-light); font-weight: 500; }
+  .flight-list { }
+  .flight-item {
+    display: grid; grid-template-columns: 60px 1fr auto auto;
+    gap: 20px; align-items: center;
+    padding: 20px 28px; border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: background 0.15s;
+  }
+  .flight-item:last-child { border-bottom: none; }
+  .flight-item:hover { background: var(--saffron-pale); }
+  .flight-num-badge {
+    background: var(--navy); color: var(--gold-light);
+    font-size: 11px; font-weight: 700; padding: 6px 8px;
+    border-radius: 6px; text-align: center; letter-spacing: 0.04em;
+  }
+  .flight-time { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--text-dark); }
+  .flight-code { font-size: 11px; color: var(--text-muted); }
+  .flight-duration { font-size: 11px; color: var(--text-muted); text-align: center; }
+  .flight-price-col { text-align: right; }
+  .flight-price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 700; color: var(--maroon);
+  }
+  .flight-price-type { font-size: 11px; color: var(--text-muted); }
+  .flight-select-btn {
+    background: var(--saffron); color: white; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 13px;
+    font-weight: 600; cursor: pointer; font-family: 'DM Sans';
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .flight-select-btn:hover { background: #E05A00; }
+
+  /* ── LOGIN MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(10,22,40,0.75); z-index: 9999;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: white; border-radius: 20px; overflow: hidden;
+    width: 440px; box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+    position: relative;
+  }
+  .modal-top {
+    background: var(--navy); padding: 32px 32px 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .modal-logo {
+    width: 44px; height: 44px; background: var(--saffron);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .modal-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: white;
+  }
+  .modal-logo-sub { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .modal-body { padding: 28px 32px 32px; }
+  .modal-title { font-size: 22px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+  .modal-subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+  .form-group { margin-bottom: 16px; }
+  .form-label { font-size: 12px; font-weight: 600; color: var(--text-mid); letter-spacing: 0.04em; display: block; margin-bottom: 6px; }
+  .form-input {
+    width: 100%; border: 1.5px solid #E8E0D0;
+    background: var(--cream); border-radius: 8px;
+    padding: 12px 14px; font-size: 14px;
+    color: var(--text-dark); font-family: 'DM Sans';
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--saffron); }
+  .form-btn {
+    width: 100%; background: var(--saffron); color: white;
+    border: none; border-radius: 8px; padding: 14px;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+    font-family: 'DM Sans'; transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .form-btn:hover { background: #E05A00; }
+  .form-divider { text-align: center; font-size: 12px; color: var(--text-muted); margin: 16px 0; }
+  .form-link { font-size: 13px; text-align: center; color: var(--text-muted); }
+  .form-link a { color: var(--saffron); text-decoration: none; font-weight: 500; }
+  .modal-close {
+    position: absolute; top: 12px; right: 16px;
+    background: none; border: none; color: rgba(255,255,255,0.5);
+    font-size: 22px; cursor: pointer; line-height: 1;
+  }
+  .modal-close:hover { color: white; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); padding: 60px 0 0; border-top: 2px solid var(--gold);
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600; color: white; margin: 12px 0 8px;
+  }
+  .footer-brand-deva { font-family: 'Noto Serif Devanagari'; color: var(--gold-light); font-size: 14px; }
+  .footer-brand-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 280px; margin-top: 10px; }
+  .footer-col-title { font-size: 11px; font-weight: 600; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 13.5px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 0; display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .footer-socials { display: flex; gap: 12px; }
+  .social-btn {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; cursor: pointer; transition: all 0.2s; text-decoration: none;
+  }
+  .social-btn:hover { background: var(--saffron); border-color: var(--saffron); }
+
+  /* ── TABS (MAIN) ── */
+  .main-tabs {
+    background: white; border-bottom: 1px solid var(--border);
+    position: sticky; top: 64px; z-index: 100;
+    display: flex; overflow-x: auto;
+  }
+  .main-tab {
+    padding: 16px 28px; font-size: 13.5px; font-weight: 500;
+    color: var(--text-muted); border: none; background: none;
+    border-bottom: 3px solid transparent; cursor: pointer;
+    transition: all 0.2s; white-space: nowrap;
+    font-family: 'DM Sans'; letter-spacing: 0.01em;
+  }
+  .main-tab:hover { color: var(--text-dark); }
+  .main-tab.active { color: var(--maroon); border-bottom-color: var(--maroon); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; padding: 48px 24px; }
+    .dest-grid { grid-template-columns: repeat(2,1fr); }
+    .dest-card.featured { grid-column: span 2; }
+    .offer-grid { grid-template-columns: 1fr; }
+    .classes-grid { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero-title { font-size: 38px; }
+  }
+
+  /* ── DASHBOARD VIEW ── */
+  .dashboard-view { display: none; padding: 32px 40px; max-width: 1200px; margin: 0 auto; }
+  .dashboard-view.active { display: block; }
+  .home-view { display: block; }
+  .home-view.hidden { display: none; }
+  .dash-welcome {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 16px; padding: 28px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; border: 1px solid rgba(201,146,26,0.2);
+  }
+  .dash-welcome-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600; color: white; margin-bottom: 4px;
+  }
+  .dash-welcome-text p { font-size: 14px; color: rgba(255,255,255,0.5); }
+  .dash-pnr { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 20px; text-align: right; }
+  .dash-pnr-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; }
+  .dash-pnr-val { font-size: 22px; font-weight: 700; color: var(--gold-light); letter-spacing: 0.1em; }
+  .dash-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 28px; }
+  .dash-card {
+    background: white; border-radius: 12px; border: 1px solid var(--border);
+    padding: 20px; position: relative;
+  }
+  .dash-card-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 12px;
+  }
+  .dash-card-val { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--text-dark); }
+  .dash-card-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .dash-bookings { background: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .dash-table-header { padding: 18px 24px; background: var(--ivory); display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); }
+  .dash-table-title { font-size: 16px; font-weight: 600; color: var(--text-dark); }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; padding: 12px 24px; text-align: left; background: var(--cream); border-bottom: 1px solid var(--border); }
+  tbody td { padding: 14px 24px; font-size: 14px; color: var(--text-mid); border-bottom: 1px solid var(--border); }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: var(--saffron-pale); }
+  .status-pill { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .status-confirmed { background: #EDF7ED; color: #2E7D32; }
+  .status-cancelled { background: #FEEBEE; color: #C62828; }
+  .status-pending { background: #FFF8E1; color: #E65100; }
+  .action-link { color: var(--saffron); font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; }
+  .action-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon"><div class="chakra"></div></div>
+    <div class="nav-brand">
+      <span class="nav-brand-main">Bharat Airlines</span>
+      <span class="nav-brand-sub">भारत एयरलाइंस</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active" onclick="showView('home',this)">Home</a>
+    <a href="#" onclick="showView('dashboard',this)">My Bookings</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#offers">Offers</a>
+    <a href="#classes">Cabin Classes</a>
+    <a href="#" class="nav-cta" onclick="openModal('loginModal')">Sign In</a>
+  </div>
+  <div class="nav-user" onclick="openModal('loginModal')" style="cursor:pointer">
+    <div class="nav-avatar">VK</div>
+  </div>
+</nav>
+
+<!-- MAIN TAB BAR -->
+<div class="main-tabs" id="mainTabs">
+  <button class="main-tab active" onclick="setMainTab(this,'search')">✈ Book Flight</button>
+  <button class="main-tab" onclick="setMainTab(this,'checkin')">🛂 Web Check-in</button>
+  <button class="main-tab" onclick="setMainTab(this,'status')">📍 Flight Status</button>
+  <button class="main-tab" onclick="setMainTab(this,'manage')">✏ Manage Booking</button>
+  <button class="main-tab" onclick="setMainTab(this,'holiday')">🏖 Holidays</button>
+</div>
+
+<!-- HOME VIEW -->
+<div class="home-view" id="homeView">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-mandala"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        India's Pride in the Sky
+      </div>
+      <h1 class="hero-title">
+        Fly the<br>
+        <span class="hero-title-accent">Spirit of</span><br>
+        Bharat
+      </h1>
+      <span class="hero-subtitle-deva">आसमान में भारत की शान</span>
+      <p class="hero-desc">
+        From the Himalayas to the seas, from the deserts to the backwaters — discover every corner of India and the world with warmth that only Bharat Airlines brings.
+      </p>
+      <div class="hero-stats">
+        <div><span class="hero-stat-num">120+</span><span class="hero-stat-label">Destinations</span></div>
+        <div><span class="hero-stat-num">48M+</span><span class="hero-stat-label">Happy Passengers</span></div>
+        <div><span class="hero-stat-num">98.2%</span><span class="hero-stat-label">On-Time Rate</span></div>
+      </div>
+    </div>
+
+    <!-- SEARCH CARD -->
+    <div class="search-card">
+      <div class="search-tabs">
+        <button class="search-tab active">One Way</button>
+        <button class="search-tab" onclick="activateTab(this)">Round Trip</button>
+        <button class="search-tab" onclick="activateTab(this)">Multi-City</button>
+      </div>
+      <div class="search-row">
+        <div class="search-field" style="flex:2">
+          <label>FROM</label>
+          <div class="search-input-wrap">
+            <span class="search-input-city" id="fromCity">DEL</span>
+            <span class="search-input-full">Indira Gandhi Intl, Delhi</span>
+          </div>
+        </div>
+        <button class="swap-btn" onclick="swapCities()" title="Swap">⇌</button>
+        <div class="search-field" style="flex:2">
+          <label>TO</label>
+          <div class="search-input-wrap">
+            <span class="search-input-city" id="toCity">BOM</span>
+            <span class="search-input-full">Chhatrapati Shivaji Intl, Mumbai</span>
+          </div>
+        </div>
+      </div>
+      <div class="search-row">
+        <div class="search-field">
+          <label>DEPARTURE</label>
+          <div class="search-input-wrap">
+            <input type="date" id="depDate" value="2026-05-20"/>
+          </div>
+        </div>
+        <div class="search-field">
+          <label>RETURN</label>
+          <div class="search-input-wrap">
+            <input type="date" id="retDate" value="2026-05-27"/>
+          </div>
+        </div>
+      </div>
+      <div class="search-row">
+        <div class="search-field">
+          <button class="pax-btn">
+            <span class="pax-btn-label">TRAVELLERS & CLASS</span>
+            <span class="pax-btn-val">1 Adult · Economy</span>
+          </button>
+        </div>
+      </div>
+      <button class="search-btn" onclick="searchFlights()">
+        ✈ Search Flights
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item"><span class="marquee-dot"></span> SALE: Mumbai to Dubai from ₹12,499</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> New routes: Varanasi · Leh · Ayodhya</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Earn 2× BharatMiles this summer</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Business Class upgrade for ₹2,999</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Amritsar to London — now direct!</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> SALE: Mumbai to Dubai from ₹12,499</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> New routes: Varanasi · Leh · Ayodhya</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Earn 2× BharatMiles this summer</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Business Class upgrade for ₹2,999</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Amritsar to London — now direct!</span>
+  </div>
+</div>
+
+<!-- FLIGHT RESULTS (hidden by default) -->
+<div style="max-width:1200px;margin:32px auto;padding:0 40px;" id="resultsSection">
+  <div class="results-panel" id="resultsPanel">
+    <div class="results-header">
+      <div>
+        <div class="results-route" id="resultsRoute">DEL → BOM</div>
+        <div class="results-meta" id="resultsMeta">20 May 2026 · 1 Passenger · Economy</div>
+      </div>
+      <span class="results-count" id="resultsCount">6 flights found</span>
+    </div>
+    <div class="flight-list" id="flightList"></div>
+  </div>
+</div>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Where will you go next?</div>
+        <h2 class="section-title">Popular <span class="section-title-italic">Destinations</span></h2>
+      </div>
+      <a href="#" class="see-all">View all routes →</a>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card featured" onclick="setDest('Goa')">
+        <div class="dest-img-placeholder" style="--c1:#006994;--c2:#00B4D8;aspect-ratio:16/9">
+          <span class="dest-icon">🌊</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Goa</div>
+          <div class="dest-country">India · Beaches & Culture</div>
+          <div class="dest-price">From ₹3,499 one-way</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+      <div class="dest-card" onclick="setDest('Jaipur')">
+        <div class="dest-img-placeholder" style="--c1:#C9921A;--c2:#FF6B00">
+          <span class="dest-icon">🏯</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Jaipur</div>
+          <div class="dest-country">India · Pink City</div>
+          <div class="dest-price">From ₹2,299</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+      <div class="dest-card" onclick="setDest('Varanasi')">
+        <div class="dest-img-placeholder" style="--c1:#FF6B00;--c2:#C9921A">
+          <span class="dest-icon">🛕</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Varanasi</div>
+          <div class="dest-country">India · Spiritual Capital</div>
+          <div class="dest-price">From ₹2,799</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+      <div class="dest-card" onclick="setDest('Dubai')">
+        <div class="dest-img-placeholder" style="--c1:#1A2E4A;--c2:#243C60">
+          <span class="dest-icon">🏙</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Dubai</div>
+          <div class="dest-country">UAE · International</div>
+          <div class="dest-price">From ₹12,499</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+      <div class="dest-card" onclick="setDest('Leh')">
+        <div class="dest-img-placeholder" style="--c1:#4A3B28;--c2:#8B0000">
+          <span class="dest-icon">🏔</span>
+        </div>
+        <div class="dest-info">
+          <div class="dest-city">Leh-Ladakh</div>
+          <div class="dest-country">India · Himalayan Gem</div>
+          <div class="dest-price">From ₹5,999</div>
+        </div>
+        <div class="dest-overlay"><div class="dest-overlay-text">Book Now<br>→</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section class="offers-section" id="offers">
+  <div class="section" style="padding-top:0;padding-bottom:0">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Limited Time</div>
+        <h2 class="section-title">Exclusive <span class="section-title-italic">Offers</span></h2>
+      </div>
+      <a href="#" class="see-all">All offers →</a>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-badge">FLASH SALE</div>
+        <div class="offer-img" style="background:linear-gradient(135deg,#FF6B00,#C9921A)">🌴</div>
+        <div class="offer-body">
+          <div class="offer-tag">Beach Escape</div>
+          <div class="offer-title">Goa Summer Deal</div>
+          <div class="offer-desc">Fly to Goa this summer and enjoy the sun, sand and culture. Valid on tickets booked before 30 May.</div>
+          <div class="offer-price-row">
+            <div class="offer-price">₹2,999 <span>/ person</span></div>
+            <button class="offer-btn">Book Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-badge">NEW ROUTE</div>
+        <div class="offer-img" style="background:linear-gradient(135deg,#8B0000,#1A2E4A)">✈</div>
+        <div class="offer-body">
+          <div class="offer-tag">International</div>
+          <div class="offer-title">Amritsar–London Direct</div>
+          <div class="offer-desc">India's first direct flight connecting Amritsar to London Heathrow. Launch fares available for a limited time.</div>
+          <div class="offer-price-row">
+            <div class="offer-price">₹34,999 <span>/ person</span></div>
+            <button class="offer-btn">Book Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-badge">UPGRADE</div>
+        <div class="offer-img" style="background:linear-gradient(135deg,#0A1628,#C9921A)">💺</div>
+        <div class="offer-body">
+          <div class="offer-tag">Business Class</div>
+          <div class="offer-title">Bid for Business</div>
+          <div class="offer-desc">Already booked Economy? Upgrade to Business Class at a fraction of the cost with our Bid & Fly programme.</div>
+          <div class="offer-price-row">
+            <div class="offer-price">₹2,999 <span>upgrade</span></div>
+            <button class="offer-btn">Bid Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE / FEATURES -->
+<section class="experience-section">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <div class="exp-grid">
+      <div class="exp-visual">
+        <div class="exp-card-stack">
+          <div class="exp-card exp-card-main">
+            <div class="exp-card-header">
+              <span class="exp-card-airline">Bharat Airlines</span>
+              <span class="exp-card-class">Business</span>
+            </div>
+            <div class="exp-route">
+              <div>
+                <div class="exp-iata">DEL</div>
+                <div class="exp-city">New Delhi</div>
+              </div>
+              <div class="exp-line">
+                <div class="exp-line-bar"></div>
+                <div class="exp-duration">2h 20m · Non-stop</div>
+              </div>
+              <div style="text-align:right">
+                <div class="exp-iata">BOM</div>
+                <div class="exp-city">Mumbai</div>
+              </div>
+            </div>
+            <div class="exp-footer">
+              <div class="exp-stat"><div class="exp-stat-val">Seat 2A</div><div class="exp-stat-key">Window</div></div>
+              <div class="exp-stat"><div class="exp-stat-val">08:45</div><div class="exp-stat-key">Departs</div></div>
+              <div class="exp-stat"><div class="exp-stat-val">BA-204</div><div class="exp-stat-key">Flight No.</div></div>
+              <div class="exp-stat"><div class="exp-stat-val">On Time</div><div class="exp-stat-key" style="color:#4CAF50">Status</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="exp-text">
+        <div class="exp-eyebrow">The Bharat Experience</div>
+        <h2 class="exp-title">Fly with <em>Pride,</em><br>Land with <em>Joy</em></h2>
+        <p class="exp-desc">Every Bharat Airlines flight is a celebration of Indian hospitality. From the moment you board to the moment you land, feel at home in the sky.</p>
+        <div class="exp-features">
+          <div class="exp-feature">
+            <div class="exp-feat-icon">🍛</div>
+            <div>
+              <div class="exp-feat-title">Authentic Indian Cuisine</div>
+              <div class="exp-feat-desc">Regional meals curated by top chefs — from Hyderabadi biryani to Gujarati thali, 30,000 feet above.</div>
+            </div>
+          </div>
+          <div class="exp-feature">
+            <div class="exp-feat-icon">🎵</div>
+            <div>
+              <div class="exp-feat-title">BharatPlay Entertainment</div>
+              <div class="exp-feat-desc">500+ Bollywood movies, regional cinema, music, and podcasts — all on a crisp 4K personal screen.</div>
+            </div>
+          </div>
+          <div class="exp-feature">
+            <div class="exp-feat-icon">📶</div>
+            <div>
+              <div class="exp-feat-title">High-Speed Wi-Fi</div>
+              <div class="exp-feat-desc">Stay connected across all domestic and international routes with our Ku-band satellite internet.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CABIN CLASSES -->
+<section id="classes">
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Your comfort, our priority</div>
+        <h2 class="section-title">Cabin <span class="section-title-italic">Classes</span></h2>
+      </div>
+    </div>
+    <div class="classes-grid">
+      <div class="class-card">
+        <div class="class-banner first">
+          <div class="class-name">Maharaja<em>First Class</em></div>
+        </div>
+        <div class="class-body">
+          <ul class="class-features">
+            <li>Fully-flat private suites with sliding door</li>
+            <li>Turndown service & Westin Heavenly bedding</li>
+            <li>5-course gourmet Indian & continental menu</li>
+            <li>Dedicated chauffeur drive to airport</li>
+            <li>Priority check-in, boarding & baggage</li>
+          </ul>
+          <a class="class-cta maroon" href="#">Explore Maharaja →</a>
+        </div>
+      </div>
+      <div class="class-card">
+        <div class="class-banner business">
+          <div class="class-name">Rajdhani<em>Business Class</em></div>
+        </div>
+        <div class="class-body">
+          <ul class="class-features">
+            <li>180° lie-flat seats with aisle access</li>
+            <li>Premium Indian meal service by renowned chefs</li>
+            <li>18" 4K personal screen with noise-cancelling</li>
+            <li>Lounge access at 40+ airports</li>
+            <li>30kg extra baggage allowance</li>
+          </ul>
+          <a class="class-cta navy" href="#">Explore Rajdhani →</a>
+        </div>
+      </div>
+      <div class="class-card">
+        <div class="class-banner economy">
+          <div class="class-name">Dharti<em>Economy Class</em></div>
+        </div>
+        <div class="class-body">
+          <ul class="class-features">
+            <li>Ergonomic seats with 32" seat pitch</li>
+            <li>Complimentary hot meals on all flights</li>
+            <li>12" HD touchscreen entertainment</li>
+            <li>Free seat selection for BharatMiles members</li>
+            <li>15kg check-in + 7kg cabin baggage</li>
+          </ul>
+          <a class="class-cta gold" href="#">Explore Dharti →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- end home-view -->
+
+<!-- DASHBOARD VIEW -->
+<div class="dashboard-view" id="dashView">
+  <div class="dash-welcome">
+    <div class="dash-welcome-text">
+      <h2>Namaste, Vikram Kumar 🙏</h2>
+      <p>You have 2 upcoming flights · 4,820 BharatMiles</p>
+    </div>
+    <div class="dash-pnr">
+      <div class="dash-pnr-label">Loyalty ID</div>
+      <div class="dash-pnr-val">BM-VK-8824</div>
+    </div>
+  </div>
+  <div class="dash-cards">
+    <div class="dash-card">
+      <div class="dash-card-icon" style="background:#FFF3E8">✈</div>
+      <div class="dash-card-val">2</div>
+      <div class="dash-card-label">Upcoming Flights</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-icon" style="background:#FDF0F0">🎫</div>
+      <div class="dash-card-val">7</div>
+      <div class="dash-card-label">Total Bookings</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-icon" style="background:#FFFAED">⭐</div>
+      <div class="dash-card-val">4,820</div>
+      <div class="dash-card-label">BharatMiles</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-icon" style="background:#EEF2F7">🛡</div>
+      <div class="dash-card-val">Silver</div>
+      <div class="dash-card-label">Tier Status</div>
+    </div>
+  </div>
+  <div class="dash-bookings">
+    <div class="dash-table-header">
+      <span class="dash-table-title">My Bookings</span>
+      <a href="#" class="see-all">Search Flights →</a>
+    </div>
+    <table>
+      <thead><tr>
+        <th>PNR</th><th>Flight</th><th>Route</th><th>Date</th><th>Class</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>BA83921</strong></td>
+          <td>BA-204 · Bharat Express</td>
+          <td>DEL → BOM</td>
+          <td>20 May 2026</td>
+          <td>Economy</td>
+          <td><span class="status-pill status-confirmed">Confirmed</span></td>
+          <td><a class="action-link">Download Ticket</a> · <a class="action-link">Cancel</a></td>
+        </tr>
+        <tr>
+          <td><strong>BA77412</strong></td>
+          <td>BA-891 · Ganga Vihar</td>
+          <td>BOM → DXB</td>
+          <td>28 May 2026</td>
+          <td>Business</td>
+          <td><span class="status-pill status-confirmed">Confirmed</span></td>
+          <td><a class="action-link">Download Ticket</a> · <a class="action-link">Cancel</a></td>
+        </tr>
+        <tr>
+          <td><strong>BA55231</strong></td>
+          <td>BA-112 · Yamuna Arrow</td>
+          <td>DEL → JAI</td>
+          <td>12 Apr 2026</td>
+          <td>Economy</td>
+          <td><span class="status-pill status-confirmed">Confirmed</span></td>
+          <td><a class="action-link">Download Ticket</a> · <a class="action-link">Cancel</a></td>
+        </tr>
+        <tr>
+          <td><strong>BA40018</strong></td>
+          <td>BA-338 · Sindhu Route</td>
+          <td>COK → DEL</td>
+          <td>03 Mar 2026</td>
+          <td>Economy</td>
+          <td><span class="status-pill status-cancelled">Cancelled</span></td>
+          <td><a class="action-link">View Details</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;background:var(--saffron);border-radius:50%;display:flex;align-items:center;justify-content:center">
+            <div style="width:24px;height:24px;border:2px solid white;border-radius:50%"></div>
+          </div>
+        </div>
+        <div class="footer-brand-name">Bharat Airlines</div>
+        <div class="footer-brand-deva">भारत एयरलाइंस</div>
+        <p class="footer-brand-desc">Carrying the soul of India to every corner of the world. Safe, on time, and always with warmth.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Fly With Us</div>
+        <ul class="footer-links">
+          <li><a href="#">Book a Flight</a></li>
+          <li><a href="#">Manage Booking</a></li>
+          <li><a href="#">Web Check-in</a></li>
+          <li><a href="#">Flight Status</a></li>
+          <li><a href="#">Cabin Classes</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Travel Info</div>
+        <ul class="footer-links">
+          <li><a href="#">Baggage Policy</a></li>
+          <li><a href="#">Visa Information</a></li>
+          <li><a href="#">Special Meals</a></li>
+          <li><a href="#">Pet Travel</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">BharatMiles</div>
+        <ul class="footer-links">
+          <li><a href="#">Join the Programme</a></li>
+          <li><a href="#">Earn Miles</a></li>
+          <li><a href="#">Redeem Miles</a></li>
+          <li><a href="#">Partner Airlines</a></li>
+          <li><a href="#">Tier Benefits</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Bharat Airlines Ltd. All rights reserved. CIN: U62200DL2026PLC000001</span>
+      <div class="footer-socials">
+        <a class="social-btn" href="#">𝕏</a>
+        <a class="social-btn" href="#">in</a>
+        <a class="social-btn" href="#">f</a>
+        <a class="social-btn" href="#">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal" onclick="closeModalOutside(event,'loginModal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('loginModal')">×</button>
+    <div class="modal-top">
+      <div class="modal-logo"><div style="width:24px;height:24px;border:2px solid white;border-radius:50%"></div></div>
+      <div>
+        <div class="modal-logo-text">Bharat Airlines</div>
+        <div class="modal-logo-sub">भारत एयरलाइंस</div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-title">Welcome back</div>
+      <div class="modal-subtitle">Sign in to manage your bookings and earn BharatMiles</div>
+      <div class="form-group">
+        <label class="form-label">Email or Username</label>
+        <input class="form-input" type="text" placeholder="yourname@email.com"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" placeholder="••••••••"/>
+      </div>
+      <button class="form-btn" onclick="doLogin()">Sign In to Bharat Airlines</button>
+      <div class="form-divider">— or —</div>
+      <div class="form-link">New traveller? <a href="#">Create a BharatMiles account</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ----- Tab switching -----
+  function activateTab(el) {
+    el.closest('.search-tabs').querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+  function setMainTab(el, tab) {
+    document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // ----- Swap cities -----
+  function swapCities() {
+    const f = document.getElementById('fromCity');
+    const t = document.getElementById('toCity');
+    const tmp = f.textContent; f.textContent = t.textContent; t.textContent = tmp;
+  }
+
+  // ----- Set destination -----
+  function setDest(city) {
+    document.getElementById('toCity').textContent = city.toUpperCase().substring(0,3);
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  // ----- Search flights -----
+  const sampleFlights = [
+    { num:'BA-204', name:'Bharat Express', dep:'06:00', arr:'08:20', dur:'2h 20m', price:'₹3,499', cls:'Economy' },
+    { num:'BA-218', name:'Yamuna Arrow', dep:'09:30', arr:'11:50', dur:'2h 20m', price:'₹3,799', cls:'Economy' },
+    { num:'BA-332', name:'Deccan Pride', dep:'12:15', arr:'14:35', dur:'2h 20m', price:'₹4,299', cls:'Business' },
+    { num:'BA-445', name:'Mumbai Express', dep:'15:00', arr:'17:25', dur:'2h 25m', price:'₹3,649', cls:'Economy' },
+    { num:'BA-560', name:'Gateway Flyer', dep:'18:30', arr:'20:55', dur:'2h 25m', price:'₹3,299', cls:'Economy' },
+    { num:'BA-891', name:'Ganga Vihar', dep:'21:00', arr:'23:20', dur:'2h 20m', price:'₹8,999', cls:'Business' },
+  ];
+
+  function searchFlights() {
+    const from = document.getElementById('fromCity').textContent;
+    const to = document.getElementById('toCity').textContent;
+    const date = document.getElementById('depDate').value;
+    const panel = document.getElementById('resultsPanel');
+    const list = document.getElementById('flightList');
+    document.getElementById('resultsRoute').textContent = `${from} → ${to}`;
+    document.getElementById('resultsMeta').textContent = `${date} · 1 Passenger · Economy`;
+    document.getElementById('resultsCount').textContent = `${sampleFlights.length} flights found`;
+    list.innerHTML = sampleFlights.map(f => `
+      <div class="flight-item">
+        <div class="flight-num-badge">${f.num}</div>
+        <div>
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">${f.name}</div>
+          <div style="display:flex;align-items:center;gap:20px">
+            <div><div class="flight-time">${f.dep}</div><div class="flight-code">${from}</div></div>
+            <div class="flight-duration" style="flex:1;text-align:center">
+              <div style="font-size:16px">——✈——</div>
+              <div>${f.dur}</div>
+            </div>
+            <div style="text-align:right"><div class="flight-time">${f.arr}</div><div class="flight-code">${to}</div></div>
+          </div>
+        </div>
+        <div class="flight-price-col">
+          <div class="flight-price-amount">${f.price}</div>
+          <div class="flight-price-type">${f.cls} · per person</div>
+        </div>
+        <button class="flight-select-btn" onclick="alert('Redirecting to seat selection for ${f.num}...')">Select</button>
+      </div>
+    `).join('');
+    panel.classList.add('visible');
+    document.getElementById('resultsSection').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // ----- View switching (Home / Dashboard) -----
+  function showView(view, el) {
+    if(el){ document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active')); el.classList.add('active'); }
+    if(view === 'home') {
+      document.getElementById('homeView').classList.remove('hidden');
+      document.getElementById('dashView').classList.remove('active');
+      document.getElementById('mainTabs').style.display = 'flex';
+    } else {
+      document.getElementById('homeView').classList.add('hidden');
+      document.getElementById('dashView').classList.add('active');
+      document.getElementById('mainTabs').style.display = 'none';
+    }
+  }
+
+  // ----- Modal -----
+  function openModal(id) { document.getElementById(id).classList.add('open'); }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+  function closeModalOutside(e,id) { if(e.target.id===id) closeModal(id); }
+  function doLogin() {
+    closeModal('loginModal');
+    showView('dashboard');
+    document.querySelector('.nav-links a.active')?.classList.remove('active');
+  }
+</script>
+</body>
+</html>
